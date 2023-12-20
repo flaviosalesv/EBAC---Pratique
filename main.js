@@ -1,24 +1,21 @@
-const form = document.getElementById('valid-form');
 
-let formvalid = false;
+var alunos = [
+    { nome: 'João', nota: 7 },
+    { nome: 'Maria', nota: 5 },
+    { nome: 'Carlos', nota: 8 },
+    { nome: 'Ana', nota: 4 },
+    { nome: 'Pedro', nota: 6 }
+];
 
-function numbervalid(campoA, campoB) {
-    return campoB > campoA;
+function filtrarAlunos() {
+    var alunosAprovados = alunos.filter(function(aluno) {
+    return aluno.nota >= 6;
+    });
+
+    return alunosAprovados;
 }
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    let campoA = parseFloat(document.getElementById('n1').value);
-    let campoB = parseFloat(document.getElementById('n2').value);
 
-    if (numbervalid(campoA, campoB)){
-        document.querySelector('.error-message').style.display = 'none';
-        document.querySelector('.success-message').style.display = 'block';
-        campoA.value = '';
-        campoB.value = '';
-    } 
-    else {
-        document.querySelector('.error-message').style.display = 'block';
-        document.querySelector('.success-message').style.display = 'none';
-        
-    }
-});
+
+var alunosAprovados = filtrarAlunos();
+console.log(alunosAprovados);
+
